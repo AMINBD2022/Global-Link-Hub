@@ -5,9 +5,9 @@ import Footer from "../Components/Footer";
 
 const RootLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen justify-between">
+    <div className="flex flex-col min-h-screen justify-between bg-base-200">
       <Navber />
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto w-11/12 ">
         <Outlet />
       </div>
       <Footer />

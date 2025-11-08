@@ -4,6 +4,9 @@ import { RouterProvider } from "react-router/dom";
 import RootLayout from "../Layouts/RootLayout";
 import HomePage from "../Pages/HomePage";
 import AllProducts from "../Pages/AllProducts";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import MyProducts from "../Pages/MyProducts";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <AllProducts />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/myProducts",
+        element: <MyProducts />,
       },
     ],
   },

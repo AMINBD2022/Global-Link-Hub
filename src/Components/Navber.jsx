@@ -11,19 +11,19 @@ const Navber = () => {
         <NavLink to="/products">Products</NavLink>
       </li>
       <li>
-        <NavLink to="/ss">Home</NavLink>
+        <NavLink to="/myProducts">My Products</NavLink>
       </li>
       <li>
-        <NavLink to="/ssq">Home</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </li>
       <li>
-        <NavLink to="/qe">Home</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
   return (
-    <div className=" shadow-sm">
-      <div className=" w-11/12 mx-auto navbar bg-base-100">
+    <div className=" bg-base-100">
+      <div className=" w-11/12 mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,10 @@ const Navber = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="text-2xl font-bold">
+          <Link
+            to="/"
+            className="text-2xl font-bold border-b-2 border-b-accent"
+          >
             Global <span className="text-accent">Hub</span>
           </Link>
         </div>
