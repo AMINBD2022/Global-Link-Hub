@@ -1,11 +1,13 @@
 import React, { use } from "react";
 import SingleProduct from "./SingleProduct";
+import { Link } from "react-router-dom";
 
 const Products = ({ productsPromise }) => {
-  const products = use(productsPromise);
+  const AllProducts = use(productsPromise);
+  const products = AllProducts.slice(0, 6);
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center py-15">
       <h2 className="text-center text-6xl font-bold py-5 ">
         Our Latest Popular Products
       </h2>
@@ -17,6 +19,9 @@ const Products = ({ productsPromise }) => {
           ></SingleProduct>
         ))}
       </div>
+      <Link to="/products" className="btn btn-accent px-8 py-5 text-white">
+        Show All Products
+      </Link>
     </div>
   );
 };

@@ -3,7 +3,8 @@ import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
   const product = useLoaderData();
-  const { name, price, origin_country, rating, available_quantity } = product;
+  const { name, price, origin_country, image, rating, available_quantity } =
+    product;
 
   return (
     <div>
@@ -12,9 +13,9 @@ const Details = () => {
           {/* Product Image */}
           <figure className="lg:w-1/2 p-5">
             <img
-              src="https://www.mobiledokan.com/media/oppo-find-x9-pro-velvet-red-official-image.webp"
+              src={image}
               alt={name}
-              className="rounded-xl w-full h-80 object-cover"
+              className="rounded-xl w-auto max-w-full h-full object-cover"
             />
           </figure>
 

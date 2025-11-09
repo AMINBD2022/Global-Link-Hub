@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
+import AuthContext from "../Contexts/AuthContext";
 
 const NewProduct = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   const addNewProductHandle = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,15 +16,30 @@ const NewProduct = () => {
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const newProduct = {
-      productName,
-      productRUL,
-      productPrice,
-      originCountry,
+      name: productName,
+      image: productRUL,
+      price: productPrice,
+      origin_country: originCountry,
       rating,
-      quantity,
+      available_quantity: quantity,
+      created_At: new Date(),
+      buyer_email: user.email,
     };
-    toast("your Product Added successfull");
-    console.log(newProduct);
+
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data after added", data);
+        if (data.insertedId) {
+          toast("your Product Added successfull");
+        }
+      });
   };
   return (
     <div>
@@ -52,9 +71,9 @@ const NewProduct = () => {
                     />
                     <label className="label">Product Price</label>
                     <input
-                      type="text"
+                      type="number"
                       name="productPrice"
-                      className="input"
+                      className="input no-spinner"
                       placeholder="Product Price..."
                     />
                     <label className="label">Origin Country</label>
@@ -66,16 +85,18 @@ const NewProduct = () => {
                     />
                     <label className="label">Product Rating</label>
                     <input
-                      type="text"
+                      type="number"
                       name="rating"
-                      className="input"
+                      min="0"
+                      step="0.01"
+                      className="input no-spinner"
                       placeholder="product quality"
                     />
                     <label className="label">Available quantity</label>
                     <input
-                      type="text"
+                      type="number"
                       name="quantity"
-                      className="input"
+                      className="input no-spinner"
                       placeholder="Available quantity"
                     />
 

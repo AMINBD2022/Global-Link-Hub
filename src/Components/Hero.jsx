@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="hero-content text-center text-neutral-content relative z-10 w-[700px]">
         <div>
-          <h2 className="text-lg italic text-accent mb-2">Trusted By People</h2>
+          <h2 className="text-lg text-accent mb-2">Trusted By People</h2>
           <h1 className="mb-5 text-4xl md:text-6xl font-bold leading-tight">
             We Offer Fast & Secure{" "}
             <span className="text-accent">Transportation</span>

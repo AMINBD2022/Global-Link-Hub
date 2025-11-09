@@ -20,3 +20,10 @@ ul li a {
 ul li a.active {
   @apply text-accent;
 }
+
+/* Chrome, Safari, Edge, Opera  input Number arrow spinner remove */
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
