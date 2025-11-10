@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import AuthContext from "../Contexts/AuthContext";
 
-const NewProduct = () => {
+const AddProduct = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
 
@@ -114,4 +114,4 @@ const NewProduct = () => {
   );
 };
 
-export default NewProduct;
+export default AddProduct;

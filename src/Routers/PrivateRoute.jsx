@@ -6,7 +6,6 @@ import AuthContext from "../Contexts/AuthContext";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location);
 
   if (loading) return <Loading />;
   if (!user) return <Navigate to="/login" state={location.pathname} />;

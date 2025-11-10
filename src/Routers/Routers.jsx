@@ -6,10 +6,10 @@ import HomePage from "../Pages/HomePage";
 import AllProducts from "../Pages/AllProducts";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import MyProducts from "../Pages/MyProducts";
-import NewProduct from "../Pages/NewProduct";
 import PrivateRoute from "./PrivateRoute";
 import Details from "../Pages/Details";
+import MyExport from "../Pages/MyExport";
+import AddProduct from "../Pages/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -33,16 +33,16 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/myProducts",
+        path: "/myexport",
         element: (
           <PrivateRoute>
-            <MyProducts />
+            <MyExport />
           </PrivateRoute>
         ),
       },
       {
-        path: "/newProduct",
-        element: <NewProduct />,
+        path: "/addProduct",
+        element: <AddProduct />,
       },
       {
         path: "/details/:id",
