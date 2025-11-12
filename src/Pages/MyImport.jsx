@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import AuthContext from "../Contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { IoIosRemoveCircle } from "react-icons/io";
 
 const MyImport = () => {
   const { user } = useContext(AuthContext);
@@ -65,7 +66,7 @@ const MyImport = () => {
             <table className="table">
               <thead className="text-center">
                 <tr className="text-2xl text-accent">
-                  My All Imported Products - {products.length}
+                  My All Imports - {products.length}
                 </tr>
               </thead>
               <tbody>
@@ -73,14 +74,14 @@ const MyImport = () => {
 
                 {products.map((product) => (
                   <tr key={product._id} className="grid grid-cols-2 md:table">
-                    <td>
+                    <td className="lg:max-w-2/12 lg:w-full">
                       <img
-                        className="w-60 h-auto aspect-2/1 rounded-2xl shadow-sm object-cover"
+                        className="w-full max-w-[250px] h-auto aspect-2/1 rounded-2xl shadow-sm object-cover"
                         src={product.image}
                         alt={product.name}
                       />
                     </td>
-                    <td>
+                    <td className="lg:max-w-6/12 lg:w-full">
                       <div>
                         <h2 className="font-bold md:text-lg">{product.name}</h2>
                         <h2 className="text-sm">
@@ -111,7 +112,7 @@ const MyImport = () => {
                         onClick={() => deleteProductHandle(product._id)}
                         className="btn btn-accent text-white"
                       >
-                        Remove
+                        Remove <IoIosRemoveCircle />
                       </button>
                     </td>
                   </tr>

@@ -1,7 +1,8 @@
 import React from "react";
 import Hero from "../Components/Hero";
 import Products from "../Components/Products";
-import Testmonial from "../Components/Testmonial";
+import TransportationModes from "../Components/TransportationModes ";
+import ContactUS from "../Components/ContactUS";
 
 const productsPromise = fetch("http://localhost:5000/products").then((res) =>
   res.json()
@@ -12,7 +13,8 @@ const HomePage = () => {
     <div>
       <Hero />
       <Products productsPromise={productsPromise} />
-      <Testmonial />
+      <TransportationModes />
+      <ContactUS />
     </div>
   );
 };

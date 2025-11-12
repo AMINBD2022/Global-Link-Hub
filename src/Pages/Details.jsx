@@ -71,7 +71,7 @@ const Details = () => {
             <img
               src={image}
               alt={name}
-              className="rounded-xl w-auto max-w-full h-full object-cover"
+              className="rounded-xl w-full h-auto aspect-5/3 object-cover"
             />
           </figure>
 

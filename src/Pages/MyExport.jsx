@@ -3,6 +3,7 @@ import AuthContext from "../Contexts/AuthContext";
 import Loading from "../Components/Loading";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 const MyExport = () => {
   const { user } = useContext(AuthContext);
@@ -122,7 +123,7 @@ const MyExport = () => {
             <table className="table">
               <thead className="text-center">
                 <tr className="text-2xl text-accent">
-                  My All Imported Products - {products.length}
+                  My All Exports - {products.length}
                 </tr>
               </thead>
               <tbody>
@@ -130,14 +131,14 @@ const MyExport = () => {
 
                 {products.map((product) => (
                   <tr key={product._id} className="grid grid-cols-2 md:table">
-                    <td className="">
+                    <td className="lg:max-w-2/12 lg:w-full">
                       <img
                         className="w-full max-w-[250px] h-auto aspect-2/1 rounded-2xl shadow-sm object-cover"
                         src={product.image}
                         alt={product.name}
                       />
                     </td>
-                    <td className="lg:max-w-3/12 lg:w-full">
+                    <td className="lg:max-w-6/12 lg:w-full">
                       <div>
                         <h2 className="md:text-lg md:font-semibold">
                           {product.name}
@@ -171,7 +172,7 @@ const MyExport = () => {
                         onClick={() => deleteProductHandle(product._id)}
                         className="btn btn-accent text-white"
                       >
-                        Delete
+                        Delete <RiDeleteBin6Fill />
                       </button>
                     </td>
                   </tr>

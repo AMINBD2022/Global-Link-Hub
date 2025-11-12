@@ -29,7 +29,7 @@ const AllProducts = () => {
       <Helmet>
         <title>All Products</title>
       </Helmet>
-      <div className="flex justify-between border-b border-b-accent/30 pb-2">
+      <div className="flex gap-5 mt-5 lg:mt-10 flex-col md:flex-row justify-between border-b border-b-accent/30 pb-2">
         <h1 className=" font-bold text-2xl md:text-4xl lg:text-5xl text-accent ">
           All Products : {filtaredProducts.length}
         </h1>
