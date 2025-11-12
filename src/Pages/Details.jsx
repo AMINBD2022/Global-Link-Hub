@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import AuthContext from "../Contexts/AuthContext";
 import { FaRegClock, FaTruck } from "react-icons/fa";
 import { GoPlusCircle } from "react-icons/go";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const { user } = useContext(AuthContext);
@@ -60,6 +61,9 @@ const Details = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>{name}</title>
+      </Helmet>
       <div className="w-11/12 mx-auto py-12 my-5">
         <div className="card lg:card-side bg-base-200">
           {/* Product Image */}
@@ -77,14 +81,14 @@ const Details = () => {
             <p className="text-xl font-semibold text-accent mt-2">
               <strong>Price : </strong>${price}
             </p>
-            <p className="text-gray-600 text-lg mt-2">
+            <p className=" text-lg mt-2">
               Origin: <span className="font-medium">{origin_country}</span>
             </p>
-            <p className="text-gray-600 text-lg mt-1">
+            <p className=" text-lg mt-1">
               Available Quantity:{" "}
               <span className="font-medium">{availableQuantity}</span>
             </p>
-            <p className="text-gray-600 text-lg mt-1">
+            <p className=" text-lg mt-1">
               Rating:{" "}
               <span className="font-medium text-yellow-500">{rating} ⭐</span>
             </p>

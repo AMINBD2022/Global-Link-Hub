@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { ImUserPlus } from "react-icons/im";
 import { FaUserPlus } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -67,6 +68,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Register Page</title>
+      </Helmet>
       <div className="hero bg-base-200 min-h-screen">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body py-12">

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { toast } from "react-toastify";
 import AuthContext from "../Contexts/AuthContext";
 import { LuCirclePlus } from "react-icons/lu";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -54,6 +54,9 @@ const AddProduct = () => {
     <div>
       <div>
         <div>
+          <Helmet>
+            <title>Add Product</title>
+          </Helmet>
           <div className="hero bg-base-200 min-h-screen">
             <div className="card bg-base-100 w-full max-w-120 shrink-0 shadow-2xl">
               <div className="card-body">

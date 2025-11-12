@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SingleProduct from "../Components/SingleProduct";
+import { Helmet } from "react-helmet";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
@@ -25,6 +26,9 @@ const AllProducts = () => {
   });
   return (
     <div className="mx-auto w-11/12">
+      <Helmet>
+        <title>All Products</title>
+      </Helmet>
       <div className="flex justify-between border-b border-b-accent/30 pb-2">
         <h1 className=" font-bold text-2xl md:text-4xl lg:text-5xl text-accent ">
           All Products : {filtaredProducts.length}

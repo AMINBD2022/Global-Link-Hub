@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../Contexts/AuthContext";
 import Loading from "../Components/Loading";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyExport = () => {
   const { user } = useContext(AuthContext);
@@ -103,6 +104,9 @@ const MyExport = () => {
   };
   return (
     <div className="w-11/12 mx-auto pt-5">
+      <Helmet>
+        <title>My Export</title>
+      </Helmet>
       <div className="overflow-x-auto">
         {products.length === 0 ? (
           <div className="text-center py-10">
@@ -116,69 +120,60 @@ const MyExport = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Products Details</th>
-                  <th>Rating</th>
-                  <th>Seller</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+              <thead className="text-center">
+                <tr className="text-2xl text-accent">
+                  My All Imported Products - {products.length}
                 </tr>
               </thead>
               <tbody>
                 {/* row 1 */}
 
-                {products.map((product, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td className="flex-1">
-                      <div className="flex items-start gap-3">
-                        <img
-                          className="w-60 h-auto aspect-2/1 rounded-2xl shadow-sm object-cover"
-                          src={product.image}
-                          alt={product.name}
-                        />
-                        <div>
-                          <div className="font-bold text-lg">
-                            {product.name}
-                          </div>
-                          <div className="text-sm">
-                            <strong>Origin Country</strong> :{" "}
-                            {product.origin_country}
-                          </div>
-                          <div className="flex gap-4">
-                            {" "}
-                            <div className="text-sm">
-                              <strong>Price</strong> : {product.price}
-                            </div>
-                          </div>
+                {products.map((product) => (
+                  <tr key={product._id} className="grid grid-cols-2 md:table">
+                    <td className="">
+                      <img
+                        className="w-full max-w-[250px] h-auto aspect-2/1 rounded-2xl shadow-sm object-cover"
+                        src={product.image}
+                        alt={product.name}
+                      />
+                    </td>
+                    <td className="lg:max-w-3/12 lg:w-full">
+                      <div>
+                        <h2 className="md:text-lg md:font-semibold">
+                          {product.name}
+                        </h2>
+                        <h3 className="text-sm">
+                          <strong>Origin Country</strong> :{" "}
+                          {product.origin_country}
+                        </h3>
+                        <h3 className="text-sm">
+                          <strong>Price</strong> : {product.price}
+                        </h3>
+                        <h2>
                           <strong>Available quantity</strong> :{" "}
                           {product.available_quantity}
-                        </div>
+                        </h2>
+                        <h2>
+                          <strong>Rating</strong> : {product.rating}
+                        </h2>
                       </div>
                     </td>
                     <td>
-                      <strong>Rating</strong> : {product.rating}
-                    </td>
-                    <td>{user.displayName}</td>
-                    <td>
                       <button
                         onClick={() => editProductHandle(product)}
-                        className="btn btn-success"
+                        className="btn btn-success text-white"
                       >
                         Update
                       </button>
                     </td>
-                    <th>
+                    <td>
                       <button
                         onClick={() => deleteProductHandle(product._id)}
-                        className="btn btn-accent"
+                        className="btn btn-accent text-white"
                       >
                         Delete
                       </button>
-                    </th>
+                    </td>
                   </tr>
                 ))}
               </tbody>

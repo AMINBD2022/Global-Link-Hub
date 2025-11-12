@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "../Contexts/AuthContext";
 import { MdLogin } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -48,6 +49,9 @@ const Login = () => {
   return (
     <div>
       <div>
+        <Helmet>
+          <title>Login Page</title>
+        </Helmet>
         <div className="hero bg-base-200 min-h-screen">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
