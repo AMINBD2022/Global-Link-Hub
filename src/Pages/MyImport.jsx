@@ -11,7 +11,9 @@ const MyImport = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch(`https://global-link-hub.vercel.app/products?email=${user?.email}`)
+    fetch(
+      `https://global-link-hub.vercel.app/importedProducts?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -30,7 +32,7 @@ const MyImport = () => {
       confirmButtonText: "Yes, Remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://global-link-hub.vercel.app/products/${id}`, {
+        fetch(`https://global-link-hub.vercel.app/importedProducts/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           try {
             const res = await fetch(
-              `https://global-link-hub.vercel.app/products/${params.id}`
+              `https://global-link-hub.vercel.app/importedProducts/${params.id}`
             );
             if (!res.ok) {
               throw new Error("Failed to fetch product data");
