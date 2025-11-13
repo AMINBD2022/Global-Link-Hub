@@ -12,7 +12,7 @@ const Login = () => {
 
   const { loginWithEmailPass, userWithGoogle, setUser, setLoading } =
     useContext(AuthContext);
-  const loginhandle = (e) => {
+  const loginHandle = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -51,7 +51,7 @@ const Login = () => {
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
               <h2 className="text-center font-semibold text-xl">Login Now</h2>
-              <form onSubmit={loginhandle}>
+              <form onSubmit={loginHandle}>
                 <fieldset className="fieldset">
                   {/* Email  */}
                   <label className="label">Your Email</label>

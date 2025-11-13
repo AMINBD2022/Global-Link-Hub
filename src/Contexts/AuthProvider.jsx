@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
+
+//----------------------- Firebase  Auth Start -----------------
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -10,10 +12,12 @@ import {
 } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 
+//----------------------- Firebase  Auth End -----------------
+
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Google SingIn func
   const userWithGoogle = () => {

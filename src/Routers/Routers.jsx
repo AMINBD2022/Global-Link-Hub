@@ -16,6 +16,7 @@ import ErrorPage from "../Pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     element: <RootLayout />,
     children: [
       {
@@ -60,14 +61,50 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewDetails/:id",
-        loader: ({ params }) =>
-          fetch(`https://global-link-hub.vercel.app/products/${params.id}`),
-        element: <ViewDetails></ViewDetails>,
+        loader: async ({ params }) => {
+          try {
+            const res = await fetch(
+              `https://global-link-hub.vercel.app/products/${params.id}`
+            );
+            if (!res.ok) {
+              throw new Error("Failed to fetch product data");
+            }
+            const data = await res.json();
+            return data;
+          } catch (error) {
+            throw new Response("Server Offline or Fetch Failed", {
+              status: 500,
+              statusText: error.message,
+            });
+          }
+        },
+        element: (
+          <PrivateRoute>
+            <ViewDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:id",
-        loader: ({ params }) =>
-          fetch(`https://global-link-hub.vercel.app/products/${params.id}`),
+
+        loader: async ({ params }) => {
+          try {
+            const res = await fetch(
+              `https://global-link-hub.vercel.app/products/${params.id}`
+            );
+            if (!res.ok) {
+              throw new Error("Failed to fetch product data");
+            }
+            const data = await res.json();
+            return data;
+          } catch (error) {
+            throw new Response("Server Offline or Fetch Failed", {
+              status: 500,
+              statusText: error.message,
+            });
+          }
+        },
+
         element: (
           <PrivateRoute>
             <Details />
