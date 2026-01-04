@@ -57,7 +57,7 @@ const Navber = () => {
   }
   return (
     <div className=" bg-base-100 sticky top-0 z-99">
-      <div className=" w-11/12 mx-auto navbar ">
+      <div className="max-w-7xl mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown z-999">
             <div

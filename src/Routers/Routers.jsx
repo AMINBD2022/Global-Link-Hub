@@ -13,6 +13,7 @@ import MyImport from "../Pages/MyImport";
 import ErrorPage from "../Pages/ErrorPage";
 import Blogs from "../Pages/Blogs";
 import Profile from "../Pages/Profile";
+import ResetPassword from "../Pages/PasswordReset";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/reset", element: <ResetPassword /> },
   { path: "*", element: <ErrorPage /> },
 ]);
 

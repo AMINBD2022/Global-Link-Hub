@@ -9,12 +9,20 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
   const [show, setShow] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ mode: "onChange" });
   const navigate = useNavigate();
   const { registerWithEmailPass, userWithGoogle } = useAuth();
-
+  const password = watch("password");
   const handleRegister = (data) => {
-    const name = data.name;
+    const name = `${data.fname} ${data.lname}`;
+
+    console.log(name);
+
     const photoURL = data.photoURL;
     const email = data.email;
     const password = data.password;
@@ -77,27 +85,36 @@ const Register = () => {
         <title>Register Page</title>
       </Helmet>
       <div className="hero bg-base-200 min-h-screen">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-[580px] shrink-0 border border-gray-200/30 shadow">
           <div className="card-body py-12">
             <h2 className="text-center font-semibold text-xl">Register Now</h2>
             <form onSubmit={handleSubmit(handleRegister)}>
               <fieldset className="fieldset">
                 {/* Name Fild  */}
                 <label className="label">Your Name</label>
-                <input
-                  type="text"
-                  {...register("name", {
-                    required: "Please enter your name",
-                  })}
-                  className="input"
-                  placeholder="Your Name..."
-                />
+                <div className="flex gap-4">
+                  {" "}
+                  <input
+                    type="text"
+                    {...register("fname", {
+                      required: "Please enter your name",
+                    })}
+                    className="input"
+                    placeholder="First Name..."
+                  />{" "}
+                  <input
+                    type="text"
+                    {...register("lname")}
+                    className="input"
+                    placeholder="Last Name..."
+                  />
+                </div>
                 {/* Photo URL  */}
                 <label className="label">Photo URL</label>
                 <input
                   type="text"
                   {...register("photoURL")}
-                  className="input"
+                  className="input w-full"
                   placeholder="Photo URL..."
                 />
                 {/* Email  */}
@@ -105,7 +122,7 @@ const Register = () => {
                 <input
                   type="email"
                   {...register("email", { required: "please enter email" })}
-                  className="input"
+                  className="input w-full"
                   placeholder="Your Email..."
                 />
                 <label className="label">Password</label>
@@ -115,7 +132,20 @@ const Register = () => {
                     {...register("password", {
                       required: "please enter password",
                     })}
-                    className="input"
+                    className="input w-full"
+                    placeholder="******"
+                  />
+                </div>
+                <label className="label">Confirme Password</label>
+                <div className="relative">
+                  <input
+                    type={show ? "text" : "password"}
+                    {...register("confirmPassword", {
+                      required: "Please confirm your password",
+                      validate: (value) =>
+                        value === password || "Passwords do not match",
+                    })}
+                    className="input w-full"
                     placeholder="******"
                   />
                   <span
@@ -125,6 +155,11 @@ const Register = () => {
                     {show ? "Hide" : "Show"}
                   </span>
                 </div>
+                {errors.confirmPassword && (
+                  <p className="text-error text-sm mt-1">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
 
                 <button className="btn btn-accent text-white text-lg mt-4">
                   Register <FaUserPlus />
