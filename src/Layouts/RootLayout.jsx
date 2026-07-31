@@ -23,7 +23,7 @@ const RootLayout = () => {
       <Footer />
       <button
         onClick={ThemeToggle}
-        className="fixed bottom-6 right-6 btn btn-accent rounded-full text-white z-10"
+        className="fixed bottom-6 right-6 btn btn-accent rounded-full text-white z-12"
       >
         {theme === "light" ? "Dark Mode" : "Light Mode"}
       </button>
